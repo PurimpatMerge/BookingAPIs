@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { useContext } from "react";
@@ -35,17 +36,19 @@ const EditProfile = () => {
   return (
     <div className="bgedit bg-cover object-cover h-screen flex-col">
       <Navbar />
-
       <ReactNotifications />
+      {loading ? (
+          "Loading please wait"
+        ) : (
       <div className="container mx-auto p-10 mt-32  sm:w-5/12 backdrop-blur-sm bg-white/30 border border-gray-400  rounded-lg ">
         <div className="w-full  mx-auto my-12 ">
           <div className="flex "></div>
 
           <Profile
-            username={data.username}
-            email={data.email}
-            phone={data.phone}
-            lineId={data.lineId}
+            username={data?.username}
+            email={data?.email}
+            phone={data?.phone}
+            lineId={data?.lineId}
           />
         </div>
         <div className="flex justify-end">
@@ -59,6 +62,7 @@ const EditProfile = () => {
           </Link>
         </div>
       </div>
+ )}
     </div>
   );
 };
