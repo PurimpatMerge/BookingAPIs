@@ -82,25 +82,26 @@ export const forgetPassword = async (req, res, next) => {
       secret,
       { expiresIn: "5m" }
     );
-    const link = `https://api-pool-villa.onrender.com//api/auth/reset-Password/${emailCheck._id}/${token}`;
+    console.log(1);
+    const link = `http://localhost:8000/api/auth/reset-Password/${emailCheck._id}/${token}`;
     var transporter = nodemailer.createTransport({
       service: "hotmail",
       auth: {
         user: "mergeofficial@hotmail.com",
-        pass: "qgsfqivlbbsovqhu",
+        pass: "onvawnibepjiemme",
       },
       tls: {
         rejectUnauthorized: false,
       },
     });
-
+    console.log(2);
     var mailOptions = {
       from: "mergeofficial@hotmail.com",
       to: req.body.email,
       subject: "Password reset Merge pool villa",
       text: link,
     };
-
+    console.log(3);
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
