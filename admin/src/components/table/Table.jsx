@@ -22,22 +22,25 @@ const List = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
-            <TableRow key={row._id}>
-              <TableCell className="tableCell">{row._id}</TableCell>
-              <TableCell className="tableCell">
-                <div className="cellWrapper">
-                  <img src={row.photo} alt="" className="image" />
-                  {row.poolvillaName}
-                </div>
-              </TableCell>
-              <TableCell className="tableCell">{row.views}</TableCell>
-              <TableCell className="tableCell">{row.count}</TableCell>
-              <TableCell className="tableCell">
-                <span className={`status ${"Approved"}`}>Hot</span>
-              </TableCell>
-            </TableRow>
-          ))}
+          {data
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 5)
+            .map((row) => (
+              <TableRow key={row._id}>
+                <TableCell className="tableCell">{row._id}</TableCell>
+                <TableCell className="tableCell">
+                  <div className="cellWrapper">
+                    <img src={row.photo} alt="" className="image" />
+                    {row.poolvillaName}
+                  </div>
+                </TableCell>
+                <TableCell className="tableCell">{row.views}</TableCell>
+                <TableCell className="tableCell">{row.count}</TableCell>
+                <TableCell className="tableCell">
+                  <span className={`status ${"Approved"}`}>Hot</span>
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </TableContainer>

@@ -130,7 +130,7 @@ const MyCalendar = (props) => {
         const start = moment(event.start);
         const end = moment(event.end) || start;
         const selectedDate = moment(value.toDate());
-
+        setSelectedEvent(event);
         if (selectedDate.isBetween(start, end, "day", "[]")) {
           return (
             <Popover
