@@ -198,7 +198,7 @@ const MyCalendar = (props) => {
                 select please
               </option>
               <option value="ffffff">ว่าง </option>
-              <option value="ffff00">ราคาวันหุด</option>
+              <option value="ffff00">ราคาวันหยุด</option>
               <option value="A020F0">ลดพิเศษ </option>
               <option value="ff0000">จอง </option>
               <option value="delete">ลบ </option>
