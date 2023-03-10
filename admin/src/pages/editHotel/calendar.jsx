@@ -130,8 +130,8 @@ const MyCalendar = (props) => {
         const start = moment(event.start);
         const end = moment(event.end) || start;
         const selectedDate = moment(value.toDate());
-
         if (selectedDate.isBetween(start, end, "day", "[]")) {
+          setSelectedEvent(event);
           return (
             <Popover
               content={
@@ -201,6 +201,7 @@ const MyCalendar = (props) => {
               <option value="ffff00">ราคาวันหุด</option>
               <option value="A020F0">ลดพิเศษ </option>
               <option value="ff0000">จอง </option>
+              <option value="delete">ลบ </option>
             </select>
             <label>Tiltle</label>
             <Input
