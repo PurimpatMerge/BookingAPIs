@@ -43,18 +43,24 @@ export const updateDates = async (req, res, next) => {
     if (!dateBook) {
       dateBook = new DatesBook({ pvid: req.params.id, events: [] });
     }
-
     const { title, start, end, price, color } = req.body;
     const events = dateBook.events;
     const index = events.findIndex(
       (event) => event.start === start && event.end === end
-    );
-    if (index === -1) {
-      dateBook.events.push({ title, start, end, price, color });
-    } else {
-      events[index] = { title, start, end, price, color };
-      dateBook.events = events;
-    }
+      );
+      if (color === "delete") {
+        if (index !== -1) {
+          events.splice(index, 1); // remove the event from the array
+          dateBook.events = events;
+        }
+      } else {
+        if (index === -1) {
+          dateBook.events.push({ title, start, end, price, color });
+        } else {
+          events[index] = { title, start, end, price, color };
+          dateBook.events = events;
+        }
+      }
     await dateBook.save();
     res.json(dateBook);
   } catch (err) {
