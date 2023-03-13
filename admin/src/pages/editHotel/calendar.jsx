@@ -11,8 +11,6 @@ import moment from "moment";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const { Option } = Select;
-
 const EventDetails = ({ event }) => (
   <div>
     <h3>{event.title}</h3>
@@ -41,10 +39,11 @@ const MyCalendar = (props) => {
       [e.target.id]: e.target.value,
     }));
   };
-  const handleEditEvent = () => {
+  const handleEditEvent = (event) => {
+    // console.log(event);
     // setInfo({ start: formattedDate, end: formattedDate });
+    setEditingEvent(event);
     setIsEditing(true);
-    setEditingEvent(selectedEvent);
   };
 
   const handleNewEvent = (formattedDate) => {
@@ -105,17 +104,16 @@ const MyCalendar = (props) => {
         const start = moment(event.start);
         const end = moment(event.end) || start;
         const selectedDate = moment(value.toDate());
-
         if (
           event.title === "จอง" &&
           selectedDate.isBetween(start, end, "day", "[]")
-        ) {
+          ) {
           return (
             <Popover
               content={
                 <div>
                   <EventDetails event={event} />
-                  <button onClick={handleEditEvent}>Edit</button>
+                  <button  onClick={() => handleEditEvent(event)}>Edit</button>
                 </div>
               }
             >
@@ -131,13 +129,12 @@ const MyCalendar = (props) => {
         const end = moment(event.end) || start;
         const selectedDate = moment(value.toDate());
         if (selectedDate.isBetween(start, end, "day", "[]")) {
-          setSelectedEvent(event);
           return (
             <Popover
               content={
                 <div>
                   <EventDetails event={event} />
-                  <button onClick={handleEditEvent}>Edit</button>
+                  <button  onClick={() => handleEditEvent(event)}>Edit</button>
                 </div>
               }
             >
@@ -170,8 +167,9 @@ const MyCalendar = (props) => {
       </div>
     );
   };
-
+  const { Option } = Select;
   return (
+    
     <div>
       <AntCalendar
         // style={{ width: "450px", height: "350px" }}
@@ -188,11 +186,21 @@ const MyCalendar = (props) => {
           onCancel={handleModalCancel}
         >
           <Form>
-            <label>Type</label>
+            <div style={{display:"flex"}}>
+            <label style={{marginRight: "10px",marginBottom:"30px"}}>Type&nbsp;:</label>
             <select
-              id={"color"}
+                  style={{
+                    padding: "2px",
+                    fontSize: "16px",
+                    borderRadius: "4px",
+                    border: "1px solid #ccc",
+                    transition: "border-color 0.2s ease-in-out",
+                    width: "100%",
+                    height:"30px"
+                }}
               onChange={handleChange}
               defaultValue={editingEvent ? editingEvent.color : ""}
+              
             >
               <option value="ffffff" disabled>
                 select please
@@ -203,18 +211,21 @@ const MyCalendar = (props) => {
               <option value="ff0000">จอง </option>
               <option value="delete">ลบ </option>
             </select>
-            <label>Tiltle</label>
-            <Input
-              id={"title"}
-              defaultValue={editingEvent ? editingEvent.title : ""}
-              onChange={handleChange}
-            />
-            <label>Price</label>
-            <Input
-              id={"price"}
-              defaultValue={editingEvent ? editingEvent.price : ""}
-              onChange={handleChange}
-            />
+            </div>
+            <Form.Item label="Title">
+    <Input
+      id="title"
+      defaultValue={editingEvent ? editingEvent.title : ""}
+      onChange={handleChange}
+    />
+  </Form.Item>
+            <Form.Item label="Price">
+    <Input
+      id="price"
+      defaultValue={editingEvent ? editingEvent.price : ""}
+      onChange={handleChange}
+    />
+  </Form.Item>
             <Form.Item label="Start">
               <Input
                 id="start"
