@@ -130,19 +130,21 @@ const NewHotel = () => {
                   />
                 </div>
               ))}
-              <div className="formInput"></div>
               <div className="formInput">
+
                 <h2> Option</h2>
               </div>
               <div className="formInput">
-                <h2> </h2>
               </div>
               <div className="formInput">
+
                 <label>Swimming Pool</label>
                 <select id="swimmingPool" onChange={handleChange}>
                   <option value={false}>No</option>
                   <option value={true}>Yes</option>
                 </select>
+              </div>
+              <div className="formInput">
                 <label>Slider</label>
                 <select id="slider" onChange={handleChange}>
                   <option value={false}>No</option>

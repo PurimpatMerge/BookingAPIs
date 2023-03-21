@@ -142,9 +142,11 @@ const NewHotel = () => {
                   />
                 </div>
               ))}
-              <div className="formInput"></div>
               <div className="formInput">
+
                 <h2> Option</h2>
+              </div>
+              <div className="formInput">
               </div>
               <div className="formInput">
                 <h2> </h2>

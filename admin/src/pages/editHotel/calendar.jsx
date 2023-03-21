@@ -185,47 +185,34 @@ const MyCalendar = (props) => {
           onOk={handleModalOk}
           onCancel={handleModalCancel}
         >
-          <Form>
-            <div style={{display:"flex"}}>
-            <label style={{marginRight: "10px",marginBottom:"30px"}}>Type&nbsp;:</label>
+         <Form>
+            <label>Type</label>
             <select
-                  style={{
-                    padding: "2px",
-                    fontSize: "16px",
-                    borderRadius: "4px",
-                    border: "1px solid #ccc",
-                    transition: "border-color 0.2s ease-in-out",
-                    width: "100%",
-                    height:"30px"
-                }}
+              id={"color"}
               onChange={handleChange}
               defaultValue={editingEvent ? editingEvent.color : ""}
-              
             >
               <option value="ffffff" disabled>
                 select please
               </option>
               <option value="ffffff">ว่าง </option>
-              <option value="ffff00">ราคาวันหยุด</option>
+              <option value="ffff00">ราคาวันหุด</option>
               <option value="A020F0">ลดพิเศษ </option>
               <option value="ff0000">จอง </option>
               <option value="delete">ลบ </option>
             </select>
-            </div>
-            <Form.Item label="Title">
-    <Input
-      id="title"
-      defaultValue={editingEvent ? editingEvent.title : ""}
-      onChange={handleChange}
-    />
-  </Form.Item>
-            <Form.Item label="Price">
-    <Input
-      id="price"
-      defaultValue={editingEvent ? editingEvent.price : ""}
-      onChange={handleChange}
-    />
-  </Form.Item>
+            <label>Tiltle</label>
+            <Input
+              id={"title"}
+              defaultValue={editingEvent ? editingEvent.title : ""}
+              onChange={handleChange}
+            />
+            <label>Price</label>
+            <Input
+              id={"price"}
+              defaultValue={editingEvent ? editingEvent.price : ""}
+              onChange={handleChange}
+            />
             <Form.Item label="Start">
               <Input
                 id="start"

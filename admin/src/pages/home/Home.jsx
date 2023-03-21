@@ -5,6 +5,7 @@ import Widget from "../../components/widget/Widget";
 // import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
+import Tableleast from "../../components/table/Tableleast";
 
 const Home = () => {
   return (
@@ -24,6 +25,10 @@ const Home = () => {
         <div className="listContainer">
           <div className="listTitle">Top 5 most booked</div>
           <Table />
+        </div>
+        <div className="listContainer">
+          <div className="listTitle">Top 5 least booked</div>
+          <Tableleast />
         </div>
       </div>
     </div>

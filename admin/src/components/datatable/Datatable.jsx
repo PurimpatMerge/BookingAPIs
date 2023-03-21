@@ -112,8 +112,8 @@ const Datatable = ({ columns = [] }) => {
             <div>
               <Image
                 src={
-                  params.row.slip[0]
-                    ? params.row.slip[0]
+                  params?.row?.slip[0]
+                    ? params?.row?.slip[0]
                     : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                 }
                 alt=""
@@ -193,7 +193,7 @@ const Datatable = ({ columns = [] }) => {
     <div className="datatable">
       {!loading ? (
         <>
-          <div className="datatableTitle">
+          <div className="datatableTitle h-full">
             {path}
             {path !== "booking" ? (
               <Link to={`/${path}/new`} className="link">
@@ -228,6 +228,7 @@ const Datatable = ({ columns = [] }) => {
           </div>
           <DataGrid
             className="datagrid"
+            style={{ height: "890px" }}
             rows={list ? list : []}
             columns={columns.concat(
               data[0] && data[0].bookingDates && data[0].bookingDates.length > 0
